@@ -1,0 +1,27 @@
+.main-header{
+    text-shadow: rgb(220,220,220) 1px 0px 0px, rgb(220,220,220) 0.540302px 0.841471px 0px, rgb(0, 0, 0) -0.416147px 0.909297px 0px, rgb(0, 0, 0) -0.989992px 0.14112px 0px, rgb(220,220,220) -0.653644px -0.756802px 0px, rgb(0, 0, 0) 0.283662px -0.958924px 0px, rgb(0, 0, 0) 0.96017px -0.279415px 0px;
+}
+footer{
+    padding: 15px;
+}
+.center-table{
+    margin-left: auto;
+    margin-right: auto;
+}
+td{
+    width: 8vw;
+}
+#oteviraci{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.highlight::selection{
+    background:#f05f40 !important;
+    color:white !important;
+}
+#ceny{
+    margin-top: 10vh;
+}
+#admin-link{
+    color:rgb(0, 0, 0) !important;
+}
