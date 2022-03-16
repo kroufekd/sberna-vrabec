@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html style="font-family: 'Schoolbell' !important;">
+<?php session_start(); ?>
+<?php
 
-<?php 
-    session_start();
     include "assets/php/db.php";
- 
+
     if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 
     }else{
-        //echo "nejsi přihlášen";
-        header("Location: https://localhost/sberna-vrabec/index.html");
+        header("Location: http://vykupna-benesovnpl.cz");
     }
 ?>
+<!DOCTYPE html>
+<html style="font-family: 'Schoolbell' !important;">
+
+
 
 
 
@@ -75,8 +76,9 @@
 <script>
 
     $.get('assets/php/getNotification.php', (result)=>{
-        console.log(JSON.parse(result));
+        //console.log(JSON.parse(result));
         result = JSON.parse(result);
+        console.log(result);
         $('#heading').val(result.header);
         $('#content').val(result.content);
         if(result.enabled == 1){
@@ -84,7 +86,7 @@
         } else{
             $('#enabled').prop('checked', false);
         }
-    })
+    });
 
 
 </script>

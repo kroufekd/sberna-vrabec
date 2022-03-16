@@ -216,6 +216,7 @@
         $(window).on('load', function() {
             $.get('assets/php/getNotification.php', (result)=>{
                 result = JSON.parse(result);
+                console.log(result);
                 if(result.enabled == 1){
                     $('.modal-body').text(result.content);
                     $('#modal-header').text(result.header);

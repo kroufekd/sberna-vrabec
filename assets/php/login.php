@@ -11,11 +11,11 @@
         if(password_verify($_POST["password"], $row["password"])){
             $_SESSION["id_user"] = $row["id_users"];
             //echo "prihlasen";
-            header("Location: http://localhost/sberna-vrabec/modal-set.php?login=success");
+            header("Location: http://vykupna-benesovnpl.cz/modal-set.php");
         } else {
-            header("Location: http://localhost/sberna-vrabec/admin.php?error=badpassword");
+            header("Location: http://vykupna-benesovnpl.cz/admin.php?error=badpassword");
         }
     } else{
-        header("Location: http://localhost/sberna-vrabec/admin.php?error=bademail");
+        header("Location: http://vykupna-benesovnpl.cz/admin.php?error=bademail");
     }
 ?>

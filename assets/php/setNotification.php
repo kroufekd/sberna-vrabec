@@ -21,12 +21,15 @@
         enabled = '".$checked."'
         WHERE id_notification = 1
     ";
-
-    $result = $conn->query($sql);
-
-    //echo $sql;
-
-    header("Location: http://localhost/sberna-vrabec/index.html");
+/*
+    if(!$conn->query($sql)){
+        echo "Error " . $conn->error;
+    }
+*/
+  //echo $sql;
+    $result = $conn->query($sql);  
+    //echo $result;
+    header("Location: http://vykupna-benesovnpl.cz/index.html");
 
 
 ?>
