@@ -2,16 +2,19 @@
 <html style="font-family: 'Schoolbell' !important;">
 
 <?php 
- session_start();
- include "php/db.php";
+    session_start();
+    include "assets/php/db.php";
+ 
+    if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
+
+    }else{
+        //echo "nejsi přihlášen";
+        header("Location: https://localhost/sberna-vrabec/index.html");
+    }
 ?>
-<?php 
-if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
-    
-}else{
-    header("Location: https://localhost/sberna");
-}
-?>
+
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -26,6 +29,7 @@ if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
@@ -41,7 +45,7 @@ if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
         <div class="col-md-6">
         
             <h2>Nastavení notifikace</h2>
-            <form action="assets/php/nofication-set.php" method="POST">
+            <form action="assets/php/setNotification.php" method="POST">
             <div class="form-group">
                 <label for="heading">Nadpis</label>
                 <input type="text" class="form-control" id="heading" name="heading" required>
@@ -52,9 +56,14 @@ if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
                 <textarea class="form-control" name="content" id="content" cols="30" rows="10" required></textarea>
             </div>
             <div class="form-group">
-                <label for="isVisible">Zveřejnit</label>
+                <div class="form-check" style="padding-left:0px">
+                <input type="checkbox" name="enabled" data-toggle="toggle" data-on="Zapnuto" data-off="Vypnuto" data-onstyle="success" data-offstyle="danger" id="enabled" value="enabled">
+                <label class="form-check-label" for="enabled">
+                    Zapnutí/Vypnutí notifikace
+                </label>
+                </div>
             </div>
-            <input type="submit" class="btn btn-success" value="Potvrdit">
+            <input type="submit" class="btn btn-primary" value="Potvrdit">
      
             </form>
         </div>
@@ -65,11 +74,25 @@ if(isset($_SESSION['id_user']) && !empty($_SESSION['id_user'])) {
 
 <script>
 
+    $.get('assets/php/getNotification.php', (result)=>{
+        console.log(JSON.parse(result));
+        result = JSON.parse(result);
+        $('#heading').val(result.header);
+        $('#content').val(result.content);
+        if(result.enabled == 1){
+            $('#enabled').prop('checked', true);
+        } else{
+            $('#enabled').prop('checked', false);
+        }
+    })
+
+
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 </body>
 
 </html>

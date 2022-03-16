@@ -69,14 +69,6 @@
 
 <script>
 
-/*    $('#myForm').on("submit", function(){
-        console.log("submit");
-        $.post('php/login.php', {email: $("#email").val(), password: $("#password").val()}, function(result){
-            console.log(result);
-        });
-        });
-*/
-
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>

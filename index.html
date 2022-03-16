@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 </head>
   
 <body id="page-top">
@@ -61,7 +64,6 @@
                         možnost si objednat odvoz z domova kontejnerem, který jim přistavíme. V areálu sběrny je
                         automobilová váha 30tun a ciferníkové váhy na drobný výkup. Ve výbavě sběrny je
                         kontejnerový nosič AVIA a vysokozdvižný vozík DESTA.
-
                     </p>
                     
             </div>
@@ -141,9 +143,9 @@
             <div class="col-sm-6 text-center">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="section-heading">Kontaktuje nás</h2>
+                        <h2 class="section-heading">Jiří Vrabec</h2>
                         <hr class="my-4">
-                        <p class="mb-5">Kontaktuje nás přímo na uvedeném telefonním čísle nebo emailové adrese.</p>
+                        <p class="mb-5">Kontaktuje mě přímo na uvedeném telefonním čísle nebo emailové adrese.</p>
                     </div>
                 </div>
                 <div class="row">
@@ -188,13 +190,45 @@
             </div>
         </div>
     </footer>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-header">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Zavřít</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script>
+        $(window).on('load', function() {
+            $.get('assets/php/getNotification.php', (result)=>{
+                result = JSON.parse(result);
+                if(result.enabled == 1){
+                    $('.modal-body').text(result.content);
+                    $('#modal-header').text(result.header);
+                    $('#myModal').modal('show');
+                }
+            });
+            
+        });
+    </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/creative.js"></script>
 </body>
 
